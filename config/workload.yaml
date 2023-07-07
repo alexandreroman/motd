@@ -1,0 +1,46 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: motd
+  labels:
+    apps.tanzu.vmware.com/workload-type: web
+    apps.tanzu.vmware.com/has-tests: "true"
+    apis.apps.tanzu.vmware.com/register-api: "true"
+    app.kubernetes.io/part-of: motd
+spec:
+  source:
+    git:
+      url: https://github.com/alexandreroman/motd.git
+      ref:
+        branch: main
+  resources:
+    limits:
+      memory: 128Mi
+    requests:
+      memory: 128Mi
+      cpu: 250m
+  params:
+  - name: annotations
+    value:
+      autoscaling.knative.dev/minScale: "0"
+      autoscaling.knative.dev/maxScale: "3"
+      autoscaling.knative.dev/target: "100"
+      autoscaling.knative.dev/metric: "rps"
+      autoscaling.knative.dev/window: "300s"
+  - name: testing_pipeline_matching_labels
+    value:
+      apps.tanzu.vmware.com/pipeline: test
+      apps.tanzu.vmware.com/language: skip
+  - name: api_descriptor
+    value:
+      type: openapi
+      location:
+        path: /api/openapi
+      owner: default-team
+      system: motd
+      description: MOTD API
+  env:
+  - name: MOTD_NAMESPACE
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.namespace

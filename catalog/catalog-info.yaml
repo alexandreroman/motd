@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: motd
+  description: Message of the Day
+  tags:
+  - web
+  annotations:
+    backstage.io/kubernetes-label-selector: app.kubernetes.io/part-of=motd
+spec:
+  type: service
+  lifecycle: experimental
+  owner: default-team
