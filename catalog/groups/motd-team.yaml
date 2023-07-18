@@ -1,0 +1,28 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: motd-team
+  description: MOTD team
+  links:
+  - url: https://github.com/alexandreroman/motd
+    title: Website
+spec:
+  type: team
+  profile:
+    displayName: MOTD team
+    email: contact@motd-corp.com
+    picture: https://raw.githubusercontent.com/alexandreroman/tap-demo-kit-gitops/main/icon.png
+  parent: motd-bu
+  children: [motd-dev-team]
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: motd-aro
+spec:
+  profile:
+    displayName: Alexandre Roman
+    email: aroman@vmware.com
+    picture: https://avatars.githubusercontent.com/u/665131
+  memberOf:
+  - motd-team

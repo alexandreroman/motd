@@ -36,8 +36,8 @@ spec:
       type: openapi
       location:
         path: /api/openapi
-      owner: default-team
-      system: motd
+      owner: default/motd-team
+      system: default/motd
       description: MOTD API
   env:
   - name: MOTD_NAMESPACE

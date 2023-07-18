@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: motd-backend
+  annotations:
+    backstage.io/kubernetes-label-selector: app.kubernetes.io/part-of=motd-backend
+spec:
+  type: service
+  lifecycle: experimental
+  owner: motd-team
+  system: motd
+  dependsOn:
+  - resource:motd-db
+  providesApis:
+  - motd-api

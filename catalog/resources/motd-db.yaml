@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: motd-db
+  description: MOTD app database
+spec:
+  type: database
+  owner: motd-team
+  system: motd

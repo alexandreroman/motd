@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: motd-bu
+  description: MOTD BU
+  links:
+  - url: https://github.com/alexandreroman/motd
+    title: Website
+spec:
+  type: sub-department
+  profile:
+    displayName: MOTD team
+    email: contact@motd-corp.com
+    picture: https://raw.githubusercontent.com/alexandreroman/tap-demo-kit-gitops/main/icon.png
+  parent: motd-corp
+  children: [motd-dev-team]

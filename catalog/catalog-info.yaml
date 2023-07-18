@@ -1,13 +1,17 @@
 apiVersion: backstage.io/v1alpha1
-kind: Component
+kind: Location
 metadata:
-  name: motd
-  description: Message of the Day
+  name: motd-catalog-info
+  description: Catalog for the 'MOTD' app
   tags:
   - web
-  annotations:
-    backstage.io/kubernetes-label-selector: app.kubernetes.io/part-of=motd
 spec:
-  type: service
-  lifecycle: experimental
-  owner: default-team
+  targets:
+  - ./components/motd.yaml
+  - ./components/motd-backend.yaml
+  - ./components/motd-frontend.yaml
+  - ./resources/motd-db.yaml
+  - ./systems/motd-system.yaml
+  - ./groups/motd-org.yaml
+  - ./groups/motd-bu.yaml
+  - ./groups/motd-team.yaml
