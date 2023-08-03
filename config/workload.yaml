@@ -40,6 +40,12 @@ spec:
       system: default/motd
       description: MOTD API
   env:
+  #! Injecting field value from the runtime deployment requires
+  #! that the feature `Downward API` is enabled in Knative Serving:
+  #! https://knative.dev/docs/serving/configuration/feature-flags/#kubernetes-downward-api
+  #!
+  #! In case this feature is not enabled on your platform, you may want to
+  #! switch to a hardcoded value for the Kubernetes namespace.
   - name: MOTD_NAMESPACE
     valueFrom:
       fieldRef:
